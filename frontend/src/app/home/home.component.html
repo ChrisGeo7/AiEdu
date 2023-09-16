@@ -1,0 +1,7 @@
+<section class="home container-fluid">
+    <form>
+        <p class="prompt">What would you like to learn?</p>
+        <input  type="text" [(ngModel)]="topicName" id="topicName" name="topicName" placeholder="Topic" >
+        <button class="primary" type="button" [routerLink]="['/module', topicName]" routerLinkActive="active">Search</button>
+    </form>
+</section>
