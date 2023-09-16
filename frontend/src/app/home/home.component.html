@@ -1,7 +1,46 @@
-<section class="home container-fluid">
-    <form>
-        <p class="prompt">What would you like to learn?</p>
-        <input  type="text" [(ngModel)]="topicName" id="topicName" name="topicName" placeholder="Topic" >
-        <button class="primary" type="button" [routerLink]="['/module', topicName]" routerLinkActive="active">Search</button>
-    </form>
-</section>
+  <section class="background-radial-gradient overflow-hidden">
+  
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+      <div class="row gx-lg-5 align-items-center mb-5 mt-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+            Education <br />
+            <span style="color: hsl(218, 81%, 75%)">made easy...</span>
+          </h1>
+          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%); font-size: 23px;">
+            The AI Education Tool is a powerful and user-friendly platform designed to facilitate the 
+            teaching and learning of any topic. Whether you're an educator looking for a comprehensive 
+            teaching aid or a student aiming to deepen your understanding of AI, this tool offers a range 
+            of features to support your journey.
+          </p>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative" >
+          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+  
+          <div class="card bg-glass">
+            <div class="card-body px-4 py-5 px-md-5">
+              <form>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <p class="prompt text-center">What would you like to learn?</p>
+                        
+                <div class="form-outline mb-4 form-floating">
+                    <input  class="form-control" [(ngModel)]="topicName" id="topicName" name="topicName" placeholder="Enter a subject" />
+                    <label class="form-label" for="topicName">Enter a topic...</label>
+                </div>
+
+
+                <!-- Submit button -->
+                <button type="button" class="btn btn-primary btn-block mb-4" [routerLink]="['/module', topicName]" routerLinkActive="active">
+                  Search
+                </button>
+  
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
