@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -17,10 +18,18 @@ public class Module extends BaseModel{
 
     private String description;
 
-    private Set<Topic> topics;
+    private int level;
+
+    private List<String> topics;
 
     public Module(String name, String description) {
         this.name = name;
         this.description = description;
     }
+
+    public Module(String name, List<String> topics) {
+        this.name = name;
+        this.topics = topics;
+    }
+
 }

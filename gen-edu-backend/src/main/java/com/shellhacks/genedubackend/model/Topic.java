@@ -15,6 +15,8 @@ public class Topic extends BaseModel{
 
     private String name;
 
-    private Set<Content> contents;
+    private String moduleName;
+
+    private String content;
 
 }
