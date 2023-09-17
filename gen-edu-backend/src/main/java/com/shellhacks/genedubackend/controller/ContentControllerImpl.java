@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(UriConstant.PATH_BASE)
 public class ContentControllerImpl {
 
     @Autowired

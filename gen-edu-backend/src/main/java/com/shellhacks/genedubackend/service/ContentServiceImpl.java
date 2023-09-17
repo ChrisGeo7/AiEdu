@@ -36,9 +36,10 @@ public class ContentServiceImpl implements ContentService{
         if (openAiResponse != null) {
             Choice choice = openAiResponse.getChoices().get(0);
             String jsonString = choice.getMessage().getContent();
+            System.out.println(jsonString);
             edupathResponse = JsonUtil.fromJson(jsonString, EdupathResponse.class);
         }
-        result = new EduPath(queryPath, new HashSet<>());
+        result = new EduPath(StringUtils.upperCase(queryPath), new HashSet<>());
         for (String module: edupathResponse.getModules()) {
             result.getModules().add(new Module(module));
         }
