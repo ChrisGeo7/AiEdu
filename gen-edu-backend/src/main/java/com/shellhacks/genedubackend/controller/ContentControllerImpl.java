@@ -4,6 +4,7 @@ import com.shellhacks.genedubackend.constant.UriConstant;
 import com.shellhacks.genedubackend.exception.InvalidInputException;
 import com.shellhacks.genedubackend.model.EduPath;
 import com.shellhacks.genedubackend.service.ContentService;
+import com.shellhacks.genedubackend.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

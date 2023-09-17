@@ -13,5 +13,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EdupathResponse {
-    List<String> modules;
+    List<ModuleRequest> modules;
 }

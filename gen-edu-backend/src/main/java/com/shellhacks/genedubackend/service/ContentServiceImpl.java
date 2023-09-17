@@ -10,6 +10,7 @@ import com.shellhacks.genedubackend.util.RestClient;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -33,16 +34,19 @@ public class ContentServiceImpl implements ContentService{
         OpenAiResponse openAiResponse = JsonUtil.fromJson(response, OpenAiResponse.class);
 
         EdupathResponse edupathResponse = null;
+
         if (openAiResponse != null) {
             Choice choice = openAiResponse.getChoices().get(0);
             String jsonString = choice.getMessage().getContent();
-            System.out.println(jsonString);
             edupathResponse = JsonUtil.fromJson(jsonString, EdupathResponse.class);
         }
-        result = new EduPath(StringUtils.upperCase(queryPath), new HashSet<>());
-        for (String module: edupathResponse.getModules()) {
-            result.getModules().add(new Module(module));
+        if (edupathResponse != null) {
+            result = new EduPath(StringUtils.upperCase(queryPath), new ArrayList<>());
+            for (ModuleRequest module: edupathResponse.getModules()) {
+                result.getModules().add(new Module(module.getName(), module.getDescription()));
+            }
         }
+
         return result;
     }
 

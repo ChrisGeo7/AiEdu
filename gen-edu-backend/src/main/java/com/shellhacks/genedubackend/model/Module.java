@@ -15,9 +15,12 @@ public class Module extends BaseModel{
 
     private String name;
 
+    private String description;
+
     private Set<Topic> topics;
 
-    public Module(String name) {
+    public Module(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 }

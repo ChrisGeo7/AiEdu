@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -16,6 +17,6 @@ public class EduPath extends BaseModel{
 
     private String name;
 
-    private Set<Module> modules;
+    private List<Module> modules;
 
 }

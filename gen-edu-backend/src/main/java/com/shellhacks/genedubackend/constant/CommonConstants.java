@@ -9,6 +9,6 @@ public interface CommonConstants {
 
 
     // Prompts
-    String eduPath = "Give me a learning path with 5 modules to learn %s with output as a list of just the module name in the following json format: {\"modules\": []}";
+    String eduPath = "Give me a learning path with 5 topics that I should follow in order to learn %s with output as a list of just the topic name and a one line description in the following json format: {\"modules\": [{\"name\": \"\", \"description\": \"\"}]}";
 
 }
