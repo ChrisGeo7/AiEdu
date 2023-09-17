@@ -1,13 +1,75 @@
-<div class="text-center">
-    <h1>Learning Path: {{ topic }}</h1>
+<section style="background-color: #CCE8FD; font-family: Helvetica, Sans-Serif;">
+    <div class="background-radial-gradient overflow-hidden">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center mb-4 mt-4">
+        <div class="col mb-5 mb-lg-0 text-center" style="z-index: 10">
+          <h1 class="display-3 fw-bold ls-tight " style="color: hsl(218, 81%, 95%)">
+            Learning Path <br />
+            <span style="color: hsl(218, 81%, 75%)" class="display-4">{{ topic }}</span>
+          </h1>
+        </div>
+      </div>
+    </div>
 </div>
 
-<ul *ngFor="let topic of content">
-    <li><h4>{{topic.name}}</h4></li>
-    <p>{{topic.description}}</p>
-</ul>
+<div class="mx-3 align-items-center">
+    <ul *ngFor="let i of content" class="list-group mt-2">
+        <div class="video container-fluid list-group-item rounded border border-dark mb-2">
+            <div class="row">
+                <div class="col float-left">
+                    <h4>{{i.name}}</h4>
+                    <p>{{i.description}}</p>
+                </div>
+            </div>
+        </div>
+    </ul>
+</div>
 
-<div>
+<div class="container my-3">
+<div class="row">
+    <div class="my-2 text-center">
+        <h2>Choose a topic and select a competency for customized results.</h2>
+    </div>
+    <div class="col float-right text-right">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" style="height: 20%; width: 37%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Topic
+            </button>
+            
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">{{content[0].name}}</a></li>
+              <li><a class="dropdown-item" href="#">{{content[1].name}}</a></li>
+              <li><a class="dropdown-item" href="#">{{content[2].name}}</a></li>
+              <li><a class="dropdown-item" href="#">{{content[3].name}}</a></li>
+              <li><a class="dropdown-item" href="#">{{content[4].name}}</a></li>
+        
+            </ul>
+          </div>
+    </div>
+    <div class="col float-left text-left">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" style="height: 20%; width: 37%;" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+              Experience Level
+            </button>
+  
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+              <li><a class="dropdown-item" href="#">Noob</a></li>
+              <li><a class="dropdown-item" href="#">Amateur</a></li>
+              <li><a class="dropdown-item" href="#">Intermediate</a></li>
+              <li><a class="dropdown-item" href="#">Advanced</a></li>
+              <li><a class="dropdown-item" href="#">Expert</a></li>
+            </ul>
+          </div>       
+    </div>
+</div>
+<div class="text-center my-3 pb-2">
+    <button class="btn btn-primary" type="submit">Submit</button>
+</div>
+</div>
+
+
+
+  <!-- <div>
     Select a topic 
     <select [(ngModel)]="name" (change)="selected()" >
         <option *ngFor="let topic of content" [ngValue]="topic.name">{{topic.name}}</option>
@@ -20,16 +82,8 @@
     <button type="button" class="btn btn-primary" [routerLink]="['/topic', name, rating]" routerLinkActive="active">
         Search
     </button>
-</div>
-
-<!-- <div class="container">
-    <div class="text-center">
-        <h2 class="section-heading text-uppercase">Youtube Videos</h2><br>
-    </div>
-    <div class="card text-center video" style="width: 18rem;">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Sunset Over the Sea"/>
-        <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
 </div> -->
+</section>
+
+
+

@@ -14,7 +14,6 @@ export class ModuleComponent implements OnInit{
   name: any;
   rating: any;
 
-
   constructor(private route: ActivatedRoute, private apiService: ApiService){
     this.topic = "";
     this.content = [];
