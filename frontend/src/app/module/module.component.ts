@@ -11,6 +11,9 @@ var stuff : any[];
 export class ModuleComponent implements OnInit{
   topic: string;
   content: any[];
+  name: any;
+  rating: any;
+
 
   constructor(private route: ActivatedRoute, private apiService: ApiService){
     this.topic = "";
@@ -25,8 +28,18 @@ export class ModuleComponent implements OnInit{
 
     this.apiService.getPostByTopic(this.topic).subscribe((data: any) => {
         this.content = data.modules;
+        console.log(this.content);
+        
     });
 
+  }
+
+  numSequence(n: number): Array<number> {
+    return Array(n);
+  }
+
+  selected(){
+    console.log(this.name + " " + this.rating)
   }
   
 

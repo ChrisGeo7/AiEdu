@@ -1,5 +1,3 @@
-
-
 <div class="text-center">
     <h1>Learning Path: {{ topic }}</h1>
 </div>
@@ -8,6 +6,21 @@
     <li><h4>{{topic.name}}</h4></li>
     <p>{{topic.description}}</p>
 </ul>
+
+<div>
+    Select a topic 
+    <select [(ngModel)]="name" (change)="selected()" >
+        <option *ngFor="let topic of content" [ngValue]="topic.name">{{topic.name}}</option>
+    </select> 
+    and the difficulty level <select [(ngModel)]="rating" (change)="selected()" >
+        <option *ngFor="let n of numSequence(5); let i = index;" [ngValue]="i+1">{{i + 1}}</option>
+    </select> 
+  
+    <br>
+    <button type="button" class="btn btn-primary" [routerLink]="['/topic', name, rating]" routerLinkActive="active">
+        Search
+    </button>
+</div>
 
 <!-- <div class="container">
     <div class="text-center">

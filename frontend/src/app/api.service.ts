@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  apiUrl = 'http://localhost:8080/edPath/get?p=';
+  apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
   getPostByTopic(topic: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${topic}`);
+    return this.http.get<any>(`${this.apiUrl}/edPath/get?p=${topic}`);
+  }
+  
+  addPost(post: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/module/topics/get`, post);
   }
 }
