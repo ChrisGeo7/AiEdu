@@ -31,39 +31,54 @@
         <h2>Choose a topic and select a competency for customized results.</h2>
     </div>
     <div class="col float-right text-right">
-        <div class="dropdown">
+        <!-- <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" style="height: 20%; width: 37%;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Topic
-            </button>
-            
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            </button> -->
+            <select [(ngModel)]="name" style="height: 25px; width: 225px;" >
+              {{topic}}
+            <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#">{{content[0].name}}</a></li>
               <li><a class="dropdown-item" href="#">{{content[1].name}}</a></li>
               <li><a class="dropdown-item" href="#">{{content[2].name}}</a></li>
               <li><a class="dropdown-item" href="#">{{content[3].name}}</a></li>
               <li><a class="dropdown-item" href="#">{{content[4].name}}</a></li>
         
-            </ul>
-          </div>
+            </ul> -->
+            <option default>{{content[0].name}}</option>
+            <option>{{content[1].name}}</option>
+            <option>{{content[2].name}}</option>
+            <option>{{content[3].name}}</option>
+            <option>{{content[4].name}}</option>
+          </select>
+          <!-- </div> -->
     </div>
     <div class="col float-left text-left">
-        <div class="dropdown">
+        <!-- <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" style="height: 20%; width: 37%;" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
               Experience Level
-            </button>
-  
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+            </button> -->
+            <select [(ngModel)]="rating" style="height: 25px; width: 225px;" >
+            <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
               <li><a class="dropdown-item" href="#">Noob</a></li>
               <li><a class="dropdown-item" href="#">Amateur</a></li>
               <li><a class="dropdown-item" href="#">Intermediate</a></li>
               <li><a class="dropdown-item" href="#">Advanced</a></li>
               <li><a class="dropdown-item" href="#">Expert</a></li>
-            </ul>
-          </div>       
+            </ul> -->
+
+            <option value=1 default>Noob</option>
+            <option value=2>Amateur</option>
+            <option value=3>Intermediate</option>
+            <option value=4>Advanced</option>
+            <option value=5>Expert</option>
+          </select>
+          <!-- <p>{{topic}} at level {{rating}}</p> -->
+          <!-- </div>        -->
     </div>
 </div>
 <div class="text-center my-3 pb-2">
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit" [routerLink]="['/topic', name, rating]" routerLinkActive="active">Submit</button>
 </div>
 </div>
 
