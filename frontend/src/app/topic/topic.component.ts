@@ -1,33 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ApiService } from '../api.service';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgFor } from '@angular/common';
 
 
 @Component({
   selector: 'app-topic',
   templateUrl: './topic.component.html',
+  standalone: true,
+  imports: [NgbNavModule, NgbNavModule, NgFor],
   styleUrls: ['./topic.component.css']
 })
 export class TopicComponent implements OnInit {
+    active = '';
     post: { name: string; level: number; } = {
       name: '',
       level: 0
     };
-    name: string;
+    posttopic: { name: string; moduleName: string; } = {
+      name: '',
+      moduleName: ''
+    };
+    moduleName: string;
     level: number;
     content: any[];
+    tname: any;
+    description: string = '';
 
     constructor(private route: ActivatedRoute, private apiService: ApiService){
-      this.name = "";
+      this.moduleName = "";
       this.level = 0;
       this.content = [];
     }
 
     ngOnInit():void{
       this.route.paramMap.subscribe((params: ParamMap) => {
-        this.name = String(params.get('name'))
+        this.moduleName = String(params.get('name'))
         this.level = Number(params.get('rating'))
-        this.post = {"name": this.name, "level": this.level}
+        this.post = {"name": this.moduleName, "level": this.level}
+        
 
         console.log(this.post);
         
@@ -36,7 +48,20 @@ export class TopicComponent implements OnInit {
       this.apiService.addPost(this.post).subscribe((data: any) => {
         console.log(data);
         this.content = data.topics;
+        this.active = this.content[0];
       });
 
     }
+
+    selected(){
+      this.posttopic = {"name": this.active, "moduleName": this.moduleName}
+      this.description = ''
+      this.apiService.getContent(this.posttopic).subscribe((data: any) => {
+        console.log(data.content);
+        this.description = data.content;
+      })
+      console.log(this.moduleName + " " + this.active)
+    }
+
+
 }

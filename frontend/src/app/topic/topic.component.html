@@ -1,18 +1,13 @@
-<header>
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-      <div class="position-sticky">
-        <div class="list-group list-group-flush mx-3 mt-4">
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple" *ngFor="let topic of content">
-            <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>{{topic}}</span>
-          </a>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <!--Main Navigation-->
-  
-  <!--Main layout-->
-  <main style="margin-top: 58px;">
-    <div class="container pt-4"></div>
-  </main>
-  <!--Main layout-->
+<div class="d-flex">
+	<div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical" >
+            <ng-container ngbNavItem="{{topic}}" *ngFor="let topic of content">
+                <button ngbNavLink (click)="selected()">{{topic}}</button>
+                <ng-template ngbNavContent>
+                    <div [innerHTML]="description"></div>
+                </ng-template>
+            </ng-container>
+	</div>
+
+	<div [ngbNavOutlet]="nav" class="ms-4"></div>
+</div>
+

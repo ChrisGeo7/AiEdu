@@ -18,4 +18,8 @@ export class ApiService {
   addPost(post: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/module/topics/get`, post);
   }
+
+  getContent(post: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/topic/get`, post);
+  }
 }

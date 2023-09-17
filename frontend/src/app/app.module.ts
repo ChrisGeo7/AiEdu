@@ -9,20 +9,21 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { TopicComponent } from './topic/topic.component';
+import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModuleComponent,
     HomeComponent,
-    TopicComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    MdbTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
