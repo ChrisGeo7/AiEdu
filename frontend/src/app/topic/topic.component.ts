@@ -26,7 +26,7 @@ export class TopicComponent implements OnInit {
     level: number;
     content: any[];
     tname: any;
-    description: string = '';
+    description: string = 'Please wait while the content is being loaded.';
 
     constructor(private route: ActivatedRoute, private apiService: ApiService){
       this.moduleName = "";
@@ -55,7 +55,7 @@ export class TopicComponent implements OnInit {
 
     selected(){
       this.posttopic = {"name": this.active, "moduleName": this.moduleName}
-      this.description = ''
+      this.description = 'Please wait while the content is being loaded.'
       this.apiService.getContent(this.posttopic).subscribe((data: any) => {
         console.log(data.content);
         this.description = data.content;
