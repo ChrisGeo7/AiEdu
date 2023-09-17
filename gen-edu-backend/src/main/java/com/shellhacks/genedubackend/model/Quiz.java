@@ -6,20 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Topic extends BaseModel{
-
-    private String name;
-
-    private String moduleName;
-
-    private String content;
-
-    private List<Quiz> quizzes;
-
+public class Quiz extends BaseModel{
+    private String question;
+    private List<String> choices;
+    private int answer;
 }

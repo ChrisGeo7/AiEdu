@@ -51,7 +51,7 @@ public class ContentControllerImpl implements ContentController{
         } catch (InvalidInputException e) {
             return new ResponseEntity<>("Invalid input: " + e.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
-            System.out.println("Exception while fetching ed path.");
+            System.out.println("Exception while fetching module topics.");
             System.out.println(e.getMessage());
         }
 
@@ -74,7 +74,29 @@ public class ContentControllerImpl implements ContentController{
         } catch (InvalidInputException e) {
             return new ResponseEntity<>("Invalid input: " + e.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
-            System.out.println("Exception while fetching ed path.");
+            System.out.println("Exception while fetching topic content.");
+            System.out.println(e.getMessage());
+        }
+
+        if (result != null) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
+    @ResponseBody
+    @RequestMapping(value = UriConstant.TOPIC_QUIZ, method = RequestMethod.POST)
+    public ResponseEntity<?> getTopicQuiz(@RequestBody Topic topic) {
+
+        Topic result = null;
+        try {
+            result = contentService.getTopicQuiz(topic);
+        } catch (InvalidInputException e) {
+            return new ResponseEntity<>("Invalid input: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            System.out.println("Exception while fetching topic content.");
             System.out.println(e.getMessage());
         }
 

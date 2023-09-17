@@ -54,7 +54,7 @@ public class ContentServiceImpl implements ContentService{
     public Module getModuleTopics(Module module) throws Exception {
 
         if (module == null || StringUtils.isEmpty(module.getName()) || module.getLevel() < 1 || module.getLevel() > 5)
-            throw new InvalidInputException("Invalid model entity input.");
+            throw new InvalidInputException("Invalid module entity input.");
 
         String prompt = String.format(CommonConstants.moduleTopics, module.getLevel(), module.getName(), module.getName());
         OpenAiQuery query = new OpenAiQuery(CommonConstants.OPEN_AI_MODEL,
@@ -84,8 +84,8 @@ public class ContentServiceImpl implements ContentService{
 
     @Override
     public Topic getTopicContent(Topic topic) throws Exception{
-        if (topic == null || StringUtils.isEmpty(topic.getName()))
-            throw new InvalidInputException("Invalid model entity input.");
+        if (topic == null || StringUtils.isEmpty(topic.getName()) || StringUtils.isEmpty(topic.getModuleName()))
+            throw new InvalidInputException("Invalid topic entity input.");
 
         String prompt = String.format(CommonConstants.topicContent, topic.getName(), topic.getModuleName());
         OpenAiQuery query = new OpenAiQuery(CommonConstants.OPEN_AI_MODEL,
@@ -110,6 +110,37 @@ public class ContentServiceImpl implements ContentService{
         }
 
         return topicResponse;
+    }
+
+    @Override
+    public Topic getTopicQuiz(Topic topic) throws Exception {
+        if (topic == null || StringUtils.isEmpty(topic.getName()) || StringUtils.isEmpty(topic.getModuleName()))
+            throw new InvalidInputException("Invalid topic entity input.");
+
+        String prompt = String.format(CommonConstants.topicQuiz, topic.getName(), topic.getModuleName());
+        OpenAiQuery query = new OpenAiQuery(CommonConstants.OPEN_AI_MODEL,
+                Arrays.asList(new Message(CommonConstants.OPEN_AI_ROLE, prompt)));
+
+        RestClient restClient = new RestClient();
+        String response  = restClient.sendRequest(CommonConstants.OPEN_AI_URL, RestClient.HttpMethod.POST, null,
+                JsonUtil.toJson(query), restClient.getHeadersJson(CommonConstants.OPEN_AI_API_KEY));
+
+        OpenAiResponse openAiResponse = JsonUtil.fromJson(response, OpenAiResponse.class);
+
+        Topic topicResponse = null;
+
+        if (openAiResponse != null) {
+            Choice choice = openAiResponse.getChoices().get(0);
+            String jsonString = choice.getMessage().getContent();
+            topicResponse = JsonUtil.fromJson(jsonString, Topic.class);
+        }
+
+        if (topicResponse != null) {
+            topicResponse.setName(topic.getName());
+        }
+
+        return topicResponse;
+
     }
 
 }

@@ -15,4 +15,6 @@ public interface CommonConstants {
 
     String topicContent = "Give a comprehensive explanation of %s in %s with appropriate examples. Give your explanation in the following json format: {\"content\": \"\"}. In addition, give the value for content as a well-formatted html markup that can be used for direct rendering.";
 
+    String topicQuiz    = "Give a list of 4 multiple choice quiz on %s in %s in the following json format: [\"quizzes\": {\"question\": \"\", choices:[\"\", \"\", \"\"], answer},]. answer should be the index number of the correct choice.";
+
 }

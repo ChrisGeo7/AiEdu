@@ -12,4 +12,5 @@ public interface ContentService {
 
     Topic getTopicContent(Topic topic) throws Exception;
 
+    Topic getTopicQuiz(Topic topic) throws Exception;
 }

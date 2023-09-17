@@ -13,4 +13,6 @@ public interface ContentController {
 
     ResponseEntity<?> getTopicContent(@RequestBody Topic topic);
 
+    ResponseEntity<?> getTopicQuiz(@RequestBody Topic topic);
+
 }
